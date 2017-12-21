@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-//B0544233 ¸êºŞ2¤A   ³¯«aã¸
+
+//B0544233 è³‡ç®¡2ä¹™   é™³å† è“
 public class Table {
 	private Deck allcard;
 	private Player[] allplayer;
@@ -18,7 +19,8 @@ public class Table {
 		allcard = new Deck(nDeck);
 		allplayer = new Player[MAXPLAYER];
 	}
-//¦¹¬°Tableªºconstructor¡A¨Ã§âª±®a©ñ¤Jallplayerªº°}¦C¤¤
+
+	// æ­¤ç‚ºTableçš„constructorï¼Œä¸¦æŠŠç©å®¶æ”¾å…¥allplayerçš„é™£åˆ—ä¸­
 	public void set_player(int pos, Player p) {
 
 		this.pos = pos;
@@ -26,19 +28,23 @@ public class Table {
 		allplayer[pos] = p;
 
 	}
-//¦^¶Ç©Ò¦³ª±®a
+
+	// å›å‚³æ‰€æœ‰ç©å®¶
 	public Player[] get_player() {
 		return allplayer;
 	}
-//dealerªºsetter
+
+	// dealerçš„setter
 	public void set_dealer(Dealer d) {
 		dealer = d;
 	}
-//¨ú±odealerªº²Ä¤G±iµP§@¬°©úµPµ¹¤j®a¬İ
+
+	// å–å¾—dealerçš„ç¬¬äºŒå¼µç‰Œä½œç‚ºæ˜ç‰Œçµ¦å¤§å®¶çœ‹
 	public Card get_face_up_card_of_dealer() {
 		return dealerCard.get(1);
 	}
-//¨C¤@­Óª±®a­nsayhello,¨Ã¤Uª`¡A¦A±N©Ò¦³ª±®a­Ó§O¤Uªºª`¦s¦bpos_betArrayªº°}¦C¤¤
+
+	// æ¯ä¸€å€‹ç©å®¶è¦sayhello,ä¸¦ä¸‹æ³¨ï¼Œå†å°‡æ‰€æœ‰ç©å®¶å€‹åˆ¥ä¸‹çš„æ³¨å­˜åœ¨pos_betArrayçš„é™£åˆ—ä¸­
 	private void ask_each_player_about_bets() {
 		for (int i = 0; i < MAXPLAYER; i++) {
 			allplayer[i].sayHello();
@@ -46,87 +52,105 @@ public class Table {
 			pos_betArray[i] = allplayer[i].makeBet();
 		}
 	}
-//µoµPµ¹ª±®a©M²ø®a
+
+	// ç™¼ç‰Œçµ¦ç©å®¶å’ŒèŠå®¶
 	private void distribute_cards_to_dealer_and_players() {
 		for (int i = 0; i < MAXPLAYER; i++) {
-			playerCard = new ArrayList<Card>();//¹êÅé¤ÆplayerCard©MdealerCard
+			playerCard = new ArrayList<Card>();// å¯¦é«”åŒ–playerCardå’ŒdealerCard
 			dealerCard = new ArrayList<Card>();
-			playerCard.add(allcard.getOneCard(true));//ª±®a¨ú±o²Ä¤@±iµP
-			playerCard.add(allcard.getOneCard(true));//ª±®a¨ú±o²Ä¤G±iµP
-			allplayer[i].setOneRoundCard(playerCard);//±N¨ú±oªº±Æ©ñ¤J¦U¦ÛªºOneRoundCard
-			
-			for (Card a : playerCard) {
-				System.out.print("player face up card is");
-				a.printCard();//¦L¥XµP
-		}}
-		dealerCard.add(allcard.getOneCard(true));//²ø®a¨ú±o²Ä¤@±iµP
-		dealerCard.add(allcard.getOneCard(true));//²ø®a¨ú±o²Ä¤G±iµP
-		dealer.setOneRoundCard(dealerCard);//±N¨ú±oªº±Æ©ñ¤J²ø®aªºOneRoundCard
+			playerCard.add(allcard.getOneCard(true));// ç©å®¶å–å¾—ç¬¬ä¸€å¼µç‰Œ
+			playerCard.add(allcard.getOneCard(true));// ç©å®¶å–å¾—ç¬¬äºŒå¼µç‰Œ
+			allplayer[i].setOneRoundCard(playerCard);// å°‡å–å¾—çš„æ’æ”¾å…¥å„è‡ªçš„OneRoundCard
 
-		Card a=get_face_up_card_of_dealer();//©I¥sget_face_up_card_of_dealer¤èªk¨ú±o²Ä¤G±iµP§@¬°©úµP¨Ã¦L¥X
+		}
+		dealerCard.add(allcard.getOneCard(true));// èŠå®¶å–å¾—ç¬¬ä¸€å¼µç‰Œ
+		dealerCard.add(allcard.getOneCard(true));// èŠå®¶å–å¾—ç¬¬äºŒå¼µç‰Œ
+		dealer.setOneRoundCard(dealerCard);// å°‡å–å¾—çš„æ’æ”¾å…¥èŠå®¶çš„OneRoundCard
+
+		Card a = get_face_up_card_of_dealer();// å‘¼å«get_face_up_card_of_dealeræ–¹æ³•å–å¾—ç¬¬äºŒå¼µç‰Œä½œç‚ºæ˜ç‰Œä¸¦å°å‡º
 		System.out.print("Dealer's face up card is: ");
 		a.printCard();
-		
-		}
-	
+
+	}
 
 	private void ask_each_player_about_hits() {
-		
-		for (int i = 0; i < MAXPLAYER; i++) {playerCard = new ArrayList<Card>();
-			do {hit = false;//¹w¥ı°²³]hit ¬°false
-				hit = allplayer[i].hit_me(this); // this¬°³o±iTable¡A¨Ã¶Ç¤Jhit_me,§PÂ_ª±®a¬O§_ÁÙ­nµP
+
+		for (int i = 0; i < MAXPLAYER; i++) {
+			playerCard = new ArrayList<Card>();
+			playerCard = allplayer[i].getOneRoundCard();// playerCardè¨­ç‚ºç©å®¶çš„getOneRoundCard
+			System.out.println(allplayer[i].getName() + "'s Cards now:");
+			for (Card c : playerCard) {
+				c.printCard();
+			}
+			do {
+				hit = false;// é å…ˆå‡è¨­hit ç‚ºfalse
+				hit = allplayer[i].hit_me(this); // thisç‚ºé€™å¼µTableï¼Œä¸¦å‚³å…¥hit_me,åˆ¤æ–·ç©å®¶æ˜¯å¦é‚„è¦ç‰Œ
 				if (hit) {
-					playerCard=allplayer[i].getOneRoundCard();//playerCard³]¬°ª±®aªºgetOneRoundCard
-					playerCard.add(allcard.getOneCard(true));//ª±®a¥[¤J·sªº¤@±iµP
-					allplayer[i].setOneRoundCard(playerCard);//¦A±Nª±®a·s¦³ªºµP³]¦^OneRoundCard
+					
+					playerCard.add(allcard.getOneCard(true));// ç©å®¶åŠ å…¥æ–°çš„ä¸€å¼µç‰Œ
+					allplayer[i].setOneRoundCard(playerCard);// å†å°‡ç©å®¶æ–°æœ‰çš„ç‰Œè¨­å›OneRoundCard
 					System.out.print("Hit! ");
-					System.out.println(allplayer[i].getName() + "'s Cards now:");
+					System.out
+							.println(allplayer[i].getName() + "'s Cards now:");
 					for (Card c : playerCard) {
 						c.printCard();
 					}
 				} else {
-					System.out.println(allplayer[i].getName() + ", Pass hit!");
-					System.out.println(allplayer[i].getName() + ", Final Card:");
+					
+					System.out
+							.println(allplayer[i].getName() + "'s Cards now:");
 					for (Card c : playerCard) {
 						c.printCard();
 					}
+					System.out.println("    Pass hit!");
+					System.out
+							.println(allplayer[i].getName() + ", Final Card:");
+					for (Card c : playerCard) {
+						c.printCard();
+					}
+					System.out.println("  " + allplayer[i].getName()
+							+ "'s hit is over!");
 				}
-			} while (hit);//­Yhit ¬°false§Y¸õ¥Xdowhile°j°é
+			} while (hit);// è‹¥hit ç‚ºfalseå³è·³å‡ºdowhileè¿´åœˆ
 		}
-		
+
 	}
 
-	//dealer¬O§_­n±Æ
+	// dealeræ˜¯å¦è¦ç‰Œ
 	private void ask_dealer_about_hits() {
-		
-		do {hit = false;
-		hit = dealer.hit_me(this); // this ªí¥Ü¶Ç¤J³o±i®à¤l¡A¨Ã¶i¤J§PÂ_¬O§_­nµP
-		if (hit) {dealerCard = new ArrayList<Card>();
-			dealerCard=dealer.getOneRoundCard();//dealerCard³]¬°²ø®aªºgetOneRoundCard
-			dealerCard.add(allcard.getOneCard(true));//²ø®a¥[¤@±iµP
-			dealer.setOneRoundCard(dealerCard);	//±N·sªºµP¦^³]¦^dealerªºOneRoundCard
-			
+
+		do {
+			hit = false;
+			hit = dealer.hit_me(this); // this è¡¨ç¤ºå‚³å…¥é€™å¼µæ¡Œå­ï¼Œä¸¦é€²å…¥åˆ¤æ–·æ˜¯å¦è¦ç‰Œ
+			if (hit) {
+				dealerCard = new ArrayList<Card>();
+				dealerCard = dealer.getOneRoundCard();// dealerCardè¨­ç‚ºèŠå®¶çš„getOneRoundCard
+				dealerCard.add(allcard.getOneCard(true));// èŠå®¶åŠ ä¸€å¼µç‰Œ
+				dealer.setOneRoundCard(dealerCard); // å°‡æ–°çš„ç‰Œå›è¨­å›dealerçš„OneRoundCard
+
 			}
-		 else {
-			for (Card c : dealerCard) {
-				c.printCard();
-			}//¦L¥XµP
-		}
-	} while (hit);
-		
+
+		} while (hit);
+
 		System.out.println("Dealer's hit is over!");
+
 	}
-//§PÂ_Ä¹ÁÙ¿é²ø®a¨Ã­pºâ¹CÀ¸«áªºÄw½X
+
+	// åˆ¤æ–·è´é‚„è¼¸èŠå®¶ä¸¦è¨ˆç®—éŠæˆ²å¾Œçš„ç±Œç¢¼
 	private void calculate_chips() {
 		int dealertotal = dealer.getTotalValue();
-		System.out.println("Dealer's card value is: " + dealertotal+" Cards:");
+		System.out
+				.println("Dealer's card value is: " + dealertotal + " Cards:");
 		dealer.printAllCard();
-		
-		//6ºØ±¡§Î: 1.ª±®a>21²ø®a>21«h¥­¤â 2.ª±®a<=21²ø®a>21«hª±®aÄ¹3.ª±®a>21²ø®a<=21 «hª±®a¿é4.ª±®aÂI¼Æ>²ø®aÂI¼Æ¨âªÌ©M¤p©ó21ª±®aÄ¹5.ª±®aÂI¼Æ<²ø®aÂI¼Æ¨âªÌ©M¤p©ó21ª±®a¿é6.¨ä¾l±¡§Î¨S¦³ÅÜÄw½X¡A¥­¤âª¬ªp
-		for (int i = 0; i < MAXPLAYER; i++) { System.out.println("");
-			System.out.println("Player"+(i+1)+"'s  Cards:");
+
+		// 6ç¨®æƒ…å½¢: 1.ç©å®¶>21èŠå®¶>21å‰‡å¹³æ‰‹ 2.ç©å®¶<=21èŠå®¶>21å‰‡ç©å®¶è´3.ç©å®¶>21èŠå®¶<=21
+		// å‰‡ç©å®¶è¼¸4.ç©å®¶é»æ•¸>èŠå®¶é»æ•¸å…©è€…å’Œå°æ–¼21ç©å®¶è´5.ç©å®¶é»æ•¸<èŠå®¶é»æ•¸å…©è€…å’Œå°æ–¼21ç©å®¶è¼¸6.å…¶é¤˜æƒ…å½¢æ²’æœ‰è®Šç±Œç¢¼ï¼Œå¹³æ‰‹ç‹€æ³
+		for (int i = 0; i < MAXPLAYER; i++) {
+			System.out.println("");
+			System.out.println("Player" + (i + 1) + "'s  Cards:");
 			allplayer[i].printAllCard();
-			System.out.print("Player"+(i+1)+" card value is: " + allplayer[i].getTotalValue());
+			System.out.print("Player" + (i + 1) + " card value is: "
+					+ allplayer[i].getTotalValue());
 			if (allplayer[i].getTotalValue() > 21 && dealertotal > 21) {
 				System.out.println(",chips have no change! The Chips now is: "
 						+ allplayer[i].getCurrentChips());
@@ -160,14 +184,16 @@ public class Table {
 				System.out.println(",chips have no change! The Chips now is: "
 						+ allplayer[i].getCurrentChips());
 			}
-		
+
 		}
 	}
-//¦^¶Çpos_betArray°}¦C(¦^¶Çª±®a¤UªºÄw½X)
+
+	// å›å‚³pos_betArrayé™£åˆ—(å›å‚³ç©å®¶ä¸‹çš„ç±Œç¢¼)
 	public int[] get_palyers_bet() {
 		return pos_betArray;
 	}
-//°õ¦æ©Ò¦³¤èªk¶i¦æ¹CÀ¸
+
+	// åŸ·è¡Œæ‰€æœ‰æ–¹æ³•é€²è¡ŒéŠæˆ²
 	public void play() {
 		ask_each_player_about_bets();
 		distribute_cards_to_dealer_and_players();

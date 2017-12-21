@@ -5,16 +5,16 @@ public   class Player extends Person {
 	private int chips;
 	private int bet;
 
-	//this.name¬°¤W­±ªºÅÜ¼Æ §ï¬°¥[¤Jªº°Ñ¼Æname (chips¥ç¦p¦¹)
+	//this.nameç‚ºä¸Šé¢çš„è®Šæ•¸ æ”¹ç‚ºåŠ å…¥çš„åƒæ•¸name (chipsäº¦å¦‚æ­¤)
 	public Player(String name, int chips) {
 		this.name = name;
 		this.chips = chips;
 	}
-	//¦^¶Çname
+	//å›å‚³name
 	public String getName() {
 		return name;
 	}
-	//¥ı³]­ì¥»bet¬°1 ¦pªG ²{¦³ªºÄw½X¤p©ó©ãª`Äw½X «h¥ş¤U¡A­YÄw½X¨S¤F¡A«h¤£·|©ãª`¡A¨ä¥L«h·ÓÄw½X¦h¤Ö©ã¦h¤Ö
+	//å…ˆè¨­åŸæœ¬betç‚º1 å¦‚æœ ç¾æœ‰çš„ç±Œç¢¼å°æ–¼æŠ¼æ³¨ç±Œç¢¼ å‰‡å…¨ä¸‹ï¼Œè‹¥ç±Œç¢¼æ²’äº†ï¼Œå‰‡ä¸æœƒæŠ¼æ³¨ï¼Œå…¶ä»–å‰‡ç…§ç±Œç¢¼å¤šå°‘æŠ¼å¤šå°‘
 	public int makeBet() {
 		bet=1;
 		if (chips < bet)
@@ -28,7 +28,7 @@ public   class Player extends Person {
 	}
 
 
-   //§Q¥Î¨ìgetTotalValueªº¤èªk¡A¦pªGµP¤p©ó16«h¦^¶ÇtrueÄ~ÄòhitMe­nµP¡A¨ä¾l¦^¶Çfalse¤£­nµP¡A¦¹¬°override
+   //åˆ©ç”¨åˆ°getTotalValueçš„æ–¹æ³•ï¼Œå¦‚æœç‰Œå°æ–¼16å‰‡å›å‚³trueç¹¼çºŒhitMeè¦ç‰Œï¼Œå…¶é¤˜å›å‚³falseä¸è¦ç‰Œï¼Œæ­¤ç‚ºoverride
 	public boolean hit_me(Table tbl) {
 		
 		if (getTotalValue() < 16) {
@@ -40,15 +40,15 @@ public   class Player extends Person {
 	}
 	
 
-//¦^¶Çchips
+//å›å‚³chips
 	public int getCurrentChips() {
 		return chips;
 	}
-//Äw½X¥[¤WÄ¹±oªº¥[ª`(diff¥¿¼Æ¬°Ä¹¡A­t¼Æ¬°¿é)	
+//ç±Œç¢¼åŠ ä¸Šè´å¾—çš„åŠ æ³¨(diffæ­£æ•¸ç‚ºè´ï¼Œè² æ•¸ç‚ºè¼¸)	
 	public void increaseChips(int diff) {
 		chips += diff;
 	}
-//¦L¥Xª±®a¦WºÙ©MÄw½X¦h¤Ö¡C
+//å°å‡ºç©å®¶åç¨±å’Œç±Œç¢¼å¤šå°‘
 	public void sayHello() {
 		getName();
 		System.out.println("Hello, I am " + name + ".");

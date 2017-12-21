@@ -1,14 +1,14 @@
-import java.util.ArrayList;
+
 
 public class Card {	
 	private Suit suit;
 	enum Suit {
 		Club, Diamand, Heart, Spade
-	};//¬°ªá¦â 
+	};//ç‚ºèŠ±è‰² 
 	
 	private int rank; // 1~13
 
-//¦L¥X¤@±i¥dªºªá¦â©M­È(¨Ì·Ó¦³¯S§O¸¹½Xªº(AJQK))
+//å°å‡ºä¸€å¼µå¡çš„èŠ±è‰²å’Œå€¼(ä¾ç…§æœ‰ç‰¹åˆ¥è™Ÿç¢¼çš„(AJQK))
 	public void printCard() {
 		
 		if (rank == 1) {
@@ -24,17 +24,17 @@ public class Card {
 		}
 	}
 
-	//sªº«¬ºA§ï¦¨Suit
+	//sçš„å‹æ…‹æ”¹æˆSuit
 	public Card(Suit s, int r) {
 		suit = s;
 		rank = r;
 	}
 
-	//getSuit()¬°¶Ç¦^suit­È ¸ê®Æ«¬ºA¬°Suit
+	//getSuit()ç‚ºå‚³å›suitå€¼ è³‡æ–™å‹æ…‹ç‚ºSuit
 	public Suit getSuit() {
 		return suit;
 	}
-	//getRank()¬°¶Ç¦^rank­È,¸ê®Æ«¬ºA¬°int
+	//getRank()ç‚ºå‚³å›rankå€¼,è³‡æ–™å‹æ…‹ç‚ºint
 	public int getRank() {
 		return rank;
 	}
